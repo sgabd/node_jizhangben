@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <h1>记账本</h1>
+    <a href="/account/create">新增记账</a>
+    <form action="/logout" method="post">
+      <button href="/logout">退出登录</button>
+    </form>
+  </div>
+  <% accounts.forEach((item) => {%>
+  <ul>
+    <li>
+      <label for="">事项：<%= item.title%></label>
+      <label for="">时间：<%= dayjs(item.time).format('YYYY-MM-DD')%></label>
+      <label for="" class="<%= item.type === 1 ?  'income' : 'expenditure' %>">类型：<%= item.type === '1' ?  '收入' : '支出' %></label>
+      <label for="">金额：<%= item.account %></label>
+      <label for="">备注：<%= item.remark %></label>
+      <em><a class="delBtn" href="/account/<%= item._id %>">删除</a></em>
+    </li>
+  </ul>
+  <% }) %>
+</body>
+<style>
+  .income {
+    color: red;
+  }
+  .expenditure {
+    color: aquamarine;
+  }
+</style>
+<script>
+  const delBtns = document.querySelectorAll('.delBtn')
+  delBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      if (confirm('确认删除该条记录吗？')){
+        return true
+      } else {
+        e.preventDefault()
+      }
+    })
+  })
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/account" method="post">
+    事项：<input type="text" name="title"><br>
+    时间: <input type="text" name="time"><br>
+    类型： <select name="type">
+      <option value="1">收入</option>
+      <option value="-1">支出</option>
+    </select><br>
+    金额：<input type="number" name="account"><br>
+    备注：<textarea type="text" name="remark"></textarea><br>
+    <button type="submit">提交</button>
+  </form>
+</body>
+</html>
